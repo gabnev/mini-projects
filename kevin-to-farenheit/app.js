@@ -4,8 +4,8 @@ var farenheitTemp = Math.floor(celsiusTemp * (9/5) + 32);
 
 // Math library has a lot of stuff
 // Math.floor() -> rounds down
-// Math.round() -> Round a number to only two decimals
 // Math.ceil() -> Round a number up to the next largest integer
+// Math.round() -> Round a number to only two decimals
 
 console.log('The temperature in kelvin is ', kelvinTemp);
 console.log('The temperature in celsius is ', celsiusTemp);
