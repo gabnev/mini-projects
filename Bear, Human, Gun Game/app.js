@@ -46,6 +46,5 @@ function getUserChoice(userInput) {
   }
 }
 
-getUserChoice('bear')
-
-
+var userChoice = prompt("Please choose bear, human or gun");
+getUserChoice(userChoice);
