@@ -42,7 +42,9 @@ function getUserChoice(userInput) {
     document.querySelector('#result').textContent = `Result: ${result}`
 
   } else {
-    return "Please select between \"Bear\", \"Human\" or \"Gun\".";
+    var alert = "Please select between \"Bear\", \"Human\" or \"Gun\".";
+    document.querySelector('#alert').textContent = alert;
+    console.log(alert)
   }
 }
 
