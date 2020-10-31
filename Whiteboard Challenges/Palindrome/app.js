@@ -1,12 +1,5 @@
-const string = 'Was it A Rat I Saw?';
+const header = document.querySelector('#title');
 
-function isPalindrome(string) {
+console.log('test')
 
-  string = string.toLowerCase().replace(/\W/g, '')
-
-  let reverse = [...string].reverse().join('');
-
-  return reverse === string;
-}
-
-console.log(isPalindrome(string));
+header.textContent = 'Hello world!'
