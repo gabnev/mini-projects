@@ -38,13 +38,23 @@ game.forEach((element) => {
   const card = document.createElement('div');
   card.classList.add('card');
   card.dataset.name = element.name;
-  card.style.backgroundImage = `url(${element.img})`;
-  grid.appendChild(card);
 
+  const front = document.createElement('div');
+  front.classList.add('front');
+
+  const back = document.createElement('div');
+  back.classList.add('back');
+  back.style.backgroundImage = `url(${element.img})`;
+
+  grid.appendChild(card);
+  card.appendChild(front);
+  card.appendChild(back);
+  
 })
 
 let guessCounter = 0;
 let previousTarget = null;
+const delay = 1200;
 let firstGuess = '';
 let secondGuess = '';
 let allCards = document.querySelectorAll('.card')
@@ -66,23 +76,23 @@ grid.addEventListener('click', (e) => {
 
   let clicked = e.target;
 
-  if (clicked.className === 'card' && guessCounter < 2) {
+  if (clicked.parentNode.className === 'card' && guessCounter < 2) {
     guessCounter++;
     console.log(guessCounter)
 
     if (guessCounter === 1) {
-      firstGuess = clicked.dataset.name;
-      clicked.classList.add('selected');
+      firstGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     } else {
-      secondGuess = clicked.dataset.name;
-      clicked.classList.add('selected');
+      secondGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     }
 
     if (firstGuess != '' && secondGuess != '') {
       if (firstGuess === secondGuess) {
-        match();
+        setTimeout(match, delay);
       }
-      resetGame();
+      setTimeout(resetGame, delay);
     }
   }
 
