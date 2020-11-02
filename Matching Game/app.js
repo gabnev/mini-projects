@@ -1,17 +1,17 @@
 
 const cardsArray = [
-  {    'name': 'CSS',    'img': 'https://github.com/robgmerrill/img/blob/master/css3-logo.png?raw=true',  },
-  {    'name': 'HTML',    'img': 'https://github.com/robgmerrill/img/blob/master/html5-logo.png?raw=true',  },
-  {    'name': 'jQuery',    'img': 'https://github.com/robgmerrill/img/blob/master/jquery-logo.png?raw=true',  },
-  {    'name': 'JS',    'img': 'https://github.com/robgmerrill/img/blob/master/js-logo.png?raw=true',  },
-  {    'name': 'Node',    'img': 'https://github.com/robgmerrill/img/blob/master/nodejs-logo.png?raw=true',  },
-  {    'name': 'Photo Shop',    'img': 'https://github.com/robgmerrill/img/blob/master/photoshop-logo.png?raw=true',  },
-  {    'name': 'PHP',    'img': 'https://github.com/robgmerrill/img/blob/master/php-logo_1.png?raw=true',  },
-  {    'name': 'Python',    'img': 'https://github.com/robgmerrill/img/blob/master/python-logo.png?raw=true',  },
-  {    'name': 'Ruby',    'img': 'https://github.com/robgmerrill/img/blob/master/rails-logo.png?raw=true',  },
-  {    'name': 'Sass',    'img': 'https://github.com/robgmerrill/img/blob/master/sass-logo.png?raw=true',  },
-  {    'name': 'Sublime',    'img': 'https://github.com/robgmerrill/img/blob/master/sublime-logo.png?raw=true',  },
-  {    'name': 'Wordpress',    'img': 'https://github.com/robgmerrill/img/blob/master/wordpress-logo.png?raw=true',  },
+  { 'name': 'CSS', 'img': 'https://github.com/robgmerrill/img/blob/master/css3-logo.png?raw=true', },
+  { 'name': 'HTML', 'img': 'https://github.com/robgmerrill/img/blob/master/html5-logo.png?raw=true', },
+  { 'name': 'jQuery', 'img': 'https://github.com/robgmerrill/img/blob/master/jquery-logo.png?raw=true', },
+  { 'name': 'JS', 'img': 'https://github.com/robgmerrill/img/blob/master/js-logo.png?raw=true', },
+  { 'name': 'Node', 'img': 'https://github.com/robgmerrill/img/blob/master/nodejs-logo.png?raw=true', },
+  { 'name': 'Photo Shop', 'img': 'https://github.com/robgmerrill/img/blob/master/photoshop-logo.png?raw=true', },
+  { 'name': 'PHP', 'img': 'https://github.com/robgmerrill/img/blob/master/php-logo_1.png?raw=true', },
+  { 'name': 'Python', 'img': 'https://github.com/robgmerrill/img/blob/master/python-logo.png?raw=true', },
+  { 'name': 'Ruby', 'img': 'https://github.com/robgmerrill/img/blob/master/rails-logo.png?raw=true', },
+  { 'name': 'Sass', 'img': 'https://github.com/robgmerrill/img/blob/master/sass-logo.png?raw=true', },
+  { 'name': 'Sublime', 'img': 'https://github.com/robgmerrill/img/blob/master/sublime-logo.png?raw=true', },
+  { 'name': 'Wordpress', 'img': 'https://github.com/robgmerrill/img/blob/master/wordpress-logo.png?raw=true', },
 ];
 
 const game = cardsArray.concat(cardsArray);
@@ -20,8 +20,8 @@ const game = cardsArray.concat(cardsArray);
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
@@ -43,13 +43,57 @@ game.forEach((element) => {
 
 })
 
+let guessCounter = 0;
+let previousTarget = null;
+let firstGuess = '';
+let secondGuess = '';
+let allCards = document.querySelectorAll('.card')
+
+function resetGame() {
+  guessCounter = 0;
+  firstGuess = '';
+  secondGuess = '';
+  previousTarget = null;
+
+  const selected = document.querySelectorAll('.selected');
+
+  selected.forEach((item) => {
+    item.classList.remove('selected');
+  })
+}
+
 grid.addEventListener('click', (e) => {
 
   let clicked = e.target;
 
-  if (clicked.className === 'card') {
-    clicked.classList.add('selected');
+  if (clicked.className === 'card' && guessCounter < 2) {
+    guessCounter++;
+    console.log(guessCounter)
+
+    if (guessCounter === 1) {
+      firstGuess = clicked.dataset.name;
+      clicked.classList.add('selected');
+    } else {
+      secondGuess = clicked.dataset.name;
+      clicked.classList.add('selected');
+    }
+
+    if (firstGuess != '' && secondGuess != '') {
+      if (firstGuess === secondGuess) {
+        match();
+      }
+      resetGame();
+    }
   }
 
+  previousTarget = clicked;
 
 })
+
+const match = function () {
+  let selected = document.querySelectorAll('.selected');
+  selected.forEach((item) => {
+    item.classList.add('match');
+  })
+}
+
