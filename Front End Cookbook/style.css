@@ -1,0 +1,109 @@
+body {
+  padding: 50px;
+}
+
+#container1 {
+  background-color: skyblue;
+  height: 300px;
+  text-align: center;
+}
+
+#broom {
+  animation-name: fly 2s infinite;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(60px);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* Challenge 1 */
+
+.box {
+  height: 300px;
+}
+
+.circle {
+  margin: 50px auto;
+  background: #BEE6F4;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  animation: shift 5s infinite;
+}
+
+
+@keyframes shift {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  0%{
+    opacity: 1;
+  }
+}
+
+/* Challenge 2 */
+
+.square {
+  background: #FE361C;
+  height: 30px;
+  width: 30px;
+  margin: 15px 0;
+}
+
+.square1:hover {
+  transform: scaleX(10);
+  transform-origin: left center;
+  transition: transform 4s;
+  transition-timing-function: linear;
+}
+
+.square2:hover {
+  transform: scaleX(10);
+  transform-origin:left center;
+  transition: transform 4s;
+  transition-timing-function: ease;
+}
+
+.square3:hover {
+  transform: scaleX(10);
+  transform-origin:left center;
+  transition: transform 4s;
+  transition-timing-function: ease-in;
+}
+
+.square4:hover {
+  transform: scaleX(10);
+  transform-origin:left center;
+  transition: transform 4s;
+  transition-timing-function: ease-out;
+}
+
+
+#container2 {
+  width: 100%;
+  height: 250px;
+  background-color: #9ad3de;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hexagon:hover {
+  transform: scale3d(1.2, 1.2, 1) rotate(45deg);  
+  transition-property: transform;
+  transition-duration: .1s;
+}
