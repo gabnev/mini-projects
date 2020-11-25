@@ -12,7 +12,8 @@
 
 <body>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <!-- fixed-top is used to fix navbar on top, but this disableds modal -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Webstaurant</a>
 
       <div class="logged-user d-none ">
@@ -20,7 +21,7 @@
       </div>
 
       <div class="login-btn">
-        <button type="button" class="btn btn-dark sign-in-btn" data-toggle="modal" data-target="#sign-in">
+        <button type="button" class="btn btn-warning sign-in-btn" data-toggle="modal" data-target="#sign-in">
           Sign In
         </button>
 
@@ -45,13 +46,13 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger clear" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary authorize" data-dismiss="modal">Sign In</button>
+                <button type="button" class="btn btn-warning authorize" data-dismiss="modal">Sign In</button>
               </div>
             </div>
           </div>
         </div>
 
-        <button type="button" class="btn btn-dark sign-up-btn" data-toggle="modal" data-target="#sign-up">
+        <button type="button" class="btn btn-warning sign-up-btn" data-toggle="modal" data-target="#sign-up">
           Sign Up
         </button>
 
@@ -76,7 +77,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger clear" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary addUser" data-dismiss="modal">Confirm</button>
+                <button type="button" class="btn btn-warning addUser" data-dismiss="modal">Confirm</button>
               </div>
             </div>
           </div>
@@ -108,7 +109,6 @@
               <h5>Schedule your meals for the whole week!</h5>
             </div>
           </div>
-
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -122,10 +122,7 @@
         </a>
       </div>
 
-
-
-
-
+      <h5 id="welcome" class="bg-dark"></h5>
     </div>
 
     <div class="menu text-center">
@@ -133,63 +130,92 @@
       <ul id="plate-list"></ul>
     </div>
 
-    <div class="schedule d-none text-center">
-      <h4 class="welcome">Select your meals for the week</h4>
-      <form id="weekMeals">
-        <ul id="weekList">
-          <li class="monday">
-            <div>
-              <label for="monday">monday</label>
-              <select name="monday" id="monday">
-                <option value=0>None</option>
-              </select>
-              <p class="monday-cost"></p>
-            </div>
-          </li>
-          <li class="tuesday">
-            <div>
-              <label for="tuesday">tuesday</label>
-              <select name="tuesday" id="tuesday">
-                <option value=0>None</option>
-              </select>
-              <p class="tuesday-cost"></p>
-            </div>
-          </li>
-          <li class="wednesday">
-            <div>
-              <label for="wednesday">wednesday</label>
-              <select name="wednesday" id="wednesday">
-                <option value=0>None</option>
-              </select>
-              <p class="wednesday-cost"></p>
-            </div>
-          </li>
-          <li class="thursday">
-            <div>
-              <label for="thursday">thursday</label>
-              <select name="thursday" id="thursday">
-                <option value=0>None</option>
-              </select>
-              <p class="thursday-cost"></p>
-            </div>
-          </li>
-          <li class="friday">
-            <div>
-              <label for="friday">friday</label>
-              <select name="friday" id="friday">
-                <option value=0>None</option>
-              </select>
-              <p class="friday-cost"></p>
-            </div>
-          </li>
+    <div class="schedule d-none text-center m-auto">
+      <div class="review text-center container">
+        <div class="bar bg-dark m-5"></div>
+        <h4 class="welcome">Select your meals for the week</h4>
 
-          <p class="cost"></p>
-          
-        </ul>
-      </form>
+        <div class="row">
+
+          <div class="col-md-4 mx-auto">
+            <form id="weekMeals" class="form-group w-50 ">
+              <ul id="weekList">
+                <li class="monday">
+                  <div class="d-inline">
+                    <label for="monday">monday</label>
+                    <p class="monday-cost"></p>
+                    <select name="monday" id="monday" class="form-control">
+                      <option value=0>None</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="tuesday">
+                  <div>
+                    <label for="tuesday">tuesday</label>
+                    <p class="tuesday-cost"></p>
+                    <select name="tuesday" id="tuesday" class="form-control">
+                      <option value=0>None</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="wednesday">
+                  <div>
+                    <label for="wednesday">wednesday</label>
+                    <p class="wednesday-cost"></p>
+                    <select name="wednesday" id="wednesday" class="form-control">
+                      <option value=0>None</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="thursday">
+                  <div>
+                    <label for="thursday">thursday</label>
+                    <p class="thursday-cost"></p>
+                    <select name="thursday" id="thursday" class="form-control">
+                      <option value=0>None</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="friday">
+                  <div>
+                    <label for="friday">friday</label>
+                    <p class="friday-cost"></p>
+                    <select name="friday" id="friday" class="form-control">
+                      <option value=0>None</option>
+                    </select>
+                  </div>
+                </li>
+
+                <h3 class="cost mt-3"></h3>
+
+              </ul>
+            </form>
+          </div>
+
+          <div class="col-md-4 mx-auto ">
+            <div class="meals bg-light p-3">
+              <h2>Last time your choices were:</h2>
+              <p class="mondayMeal"></p>
+              <p class="tuesdayMeal"></p>
+              <p class="wednesdaymeal"></p>
+              <p class="thursdayMeal"></p>
+              <p class="fridayMeal"></p>
+            </div>            
+          </div>
+
+
+        </div>
+
+
+
+      </div>
     </div>
 
-    <footer></footer>
+
+
+    <footer class="bg-dark mt-5">
+      <p >Webstaurant is a fictional restaurant part of IEFP JS course.</p>
+    </footer>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
