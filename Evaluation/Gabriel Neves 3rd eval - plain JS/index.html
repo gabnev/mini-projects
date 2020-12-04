@@ -14,7 +14,16 @@
   <div>
     <!-- fixed-top is used to fix navbar on top, but this disableds modal -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
       <a class="navbar-brand" href="#">Webstaurant</a>
+
+      <div class="menu-section">
+        <a href="#menu" class="btn btn-success about-btn float-left mr-1">Menu</a>        
+      </div>
+
+      <div class="about-section">
+        <a href="#about-us" class="btn btn-success about-btn float-left mr-1">About Us</a>        
+      </div>
 
       <div class="logged-user d-none ">
         <button class="btn btn-danger loggout float-right">Loggout</button>
@@ -125,7 +134,12 @@
       <h5 id="welcome" class="bg-dark"></h5>
     </div>
 
-    <div class="menu text-center">
+    <div id="about-us">
+      <h3 class="text-center">How Webstaurant Works</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut exercitationem enim sapiente totam asperiores nihil dolores adipisci soluta dolore facere veritatis unde alias, minus deleniti molestiae aliquid? Sunt, praesentium placeat.</p>
+    </div>
+
+    <div id="menu" class="menu text-center">
       <h5>Today's menu is:</h5>
       <ul id="plate-list"></ul>
     </div>
@@ -200,7 +214,7 @@
               <p class="wednesdaymeal"></p>
               <p class="thursdayMeal"></p>
               <p class="fridayMeal"></p>
-            </div>            
+            </div>
           </div>
 
 
@@ -214,7 +228,7 @@
 
 
     <footer class="bg-dark mt-5">
-      <p >Webstaurant is a fictional restaurant part of IEFP JS course.</p>
+      <p>Webstaurant is a fictional restaurant part of IEFP JS course.</p>
     </footer>
   </div>
 

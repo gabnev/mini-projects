@@ -8,9 +8,9 @@ var plates = [
   { Name: "Sushi", Day: "Thursday", Type: "Fish", Price: 10, img: "https://cdn.pixabay.com/photo/2016/11/25/16/08/sushi-1858696_960_720.jpg" },
   { Name: "Spaghetti bolognese", Day: "Thursday", Type: "Meat", Price: 7, img: "https://cdn.pixabay.com/photo/2019/10/13/14/23/spaghetti-bolognese-4546233_960_720.jpg" },
   { Name: "Fish Soup", Day: "Friday", Type: "Fish", Price: 7, img: "https://cdn.pixabay.com/photo/2018/01/01/17/57/fish-soup-3054627_960_720.jpg" },
-  { Name: "Chicken", Day: "Friday", Type: "Meat", Price: 6, img: "https://cdn.pixabay.com/photo/2016/11/18/17/42/barbecue-1836053_960_720.jpg" },
-  { Name: "No service on weekends", Day: "Saturday", Type: "None", Price: 0, img: "" },
-  { Name: "No service on weekends", Day: "Sunday", Type: "None", Price: 0, img: "" }
+  { Name: "Chicken", Day: "Friday", Type: "Meat", Price: 6, img: "https://cdn.pixabay.com/photo/2016/11/18/17/42/barbecue-1836053_960_720.jpg" }
+  // { Name: "No service on weekends", Day: "Saturday", Type: "None", Price: 0, img: "" },
+  // { Name: "No service on weekends", Day: "Sunday", Type: "None", Price: 0, img: "" }
 ]
 
 // Weekday
@@ -49,6 +49,7 @@ const addNewUser = document.querySelector('.addUser')
 const userLogin = document.querySelector('.userLogin');
 const userPassword = document.querySelector('.userPassword');
 const authorize = document.querySelector('.authorize');
+const aboutBtn = document.querySelector('.about-btn');
 const signInBtn = document.querySelector('.sign-in-btn');
 const signUpBtn = document.querySelector('.sign-up-btn');
 const loggedUser = document.querySelector('.logged-user');
@@ -114,8 +115,9 @@ function logIn() {
 
   users.forEach(user => {
 
-    if (user.username === currentLogin && user.password === currentPassword) {
-
+    if (user.username !== currentLogin && user.password !== currentPassword) {
+      loggedAs = "not found";  
+    } else {
       loggedAs = user.username;
 
       isLogged = true;
@@ -130,6 +132,10 @@ function logIn() {
       return loggedAs;
     }
   })
+
+  if (loggedAs === "not found") {
+    alert("Credentials incorrect.");
+  }
 
 }
 
@@ -210,10 +216,10 @@ document.querySelector('nav').addEventListener('click', () => {
 
 const plateList = document.querySelector('#plate-list');
 
-let menuToday = plates.filter(plate => plate.Day === weekDay ? true : false);
+// let menuToday = plates.filter(plate => plate.Day === weekDay ? true : false);
+// menuToday.forEach((item)
 
-
-menuToday.forEach((item) => {
+plates.forEach((item) => {
 
 
   let plateItem = document.createElement('li');
@@ -226,8 +232,6 @@ menuToday.forEach((item) => {
 })
 
 // Dynamic week menu
-
-
 
 plates.forEach(plate => {
 
